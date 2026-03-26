@@ -1,0 +1,141 @@
+/* =========================================
+   Configurações Globais e Fundo Azul Claro
+   ========================================= */
+body {
+    background-color: rgb(135, 206, 250); /* Azul céu claro requested */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Verdana', sans-serif;
+    overflow-x: hidden; /* Impede barra de rolagem horizontal */
+}
+
+/* =========================================
+   Cartão de Texto (Conteúdo Principal)
+   ========================================= */
+.conteudo {
+    /* Fundo branco com bastante transparência para ver a chuva atrás */
+    background-color: rgba(255, 255, 255, 0.7); 
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 600px;
+    text-align: center;
+    z-index: 10; /* Garante que o texto fique SEMPRE na frente */
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1); /* Sombra suave */
+}
+
+/* Estilo do Título - Preto */
+h1 {
+    color: #000000;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+/* Estilo dos Parágrafos - Preto e Tamanho 20px */
+p {
+    color: #000000;
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Área da Assinatura e Imagem */
+.rodape {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagem-acai {
+    max-width: 150px; /* Ajuste o tamanho da imagem */
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.assinatura {
+    font-size: 18px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* =========================================
+   Efeito de "Chuva de Círculos Roxos Bagunçados"
+   ========================================= */
+.acai-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Cliques passam através */
+    z-index: 1; /* Chuva fica atrás */
+}
+
+/* Estilo Base para todos os 5 círculos */
+.circulo {
+    position: absolute;
+    top: -100px; /* Começa acima da tela */
+    font-size: 50px; /* Tamanho base grande */
+    opacity: 0;
+    animation: chuvaCaindo 6s linear infinite;
+}
+
+/* === Posicionamento e Bagunça dos 5 Círculos === */
+
+/* 1. Uma na ponta esquerda, cai mais rápido */
+.circulo-1 {
+    left: 5%;
+    font-size: 40px;
+    animation-duration: 4s;
+}
+
+/* 2. Outro no meio-esquerda, atrasado */
+.circulo-2 {
+    left: 25%;
+    animation-delay: 2s;
+}
+
+/* 3. Um no centro exato, grande */
+.circulo-3 {
+    left: 50%;
+    font-size: 60px;
+    transform: translateX(-50%); /* Centraliza */
+    animation-delay: 1s;
+}
+
+/* 4. Outro no meio-direita, cai lento */
+.circulo-4 {
+    left: 75%;
+    animation-duration: 8s;
+}
+
+/* 5. Uma na ponta direita, tamanho médio */
+.circulo-5 {
+    left: 95%;
+    font-size: 45px;
+    animation-delay: 3s;
+}
+
+/* --- Definição da Animação Única de Queda --- */
+@keyframes chuvaCaindo {
+    0% {
+        transform: translateY(0); /* Começa no topo */
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6; /* Aparece */
+    }
+    90% {
+        opacity: 0.6; /* Mantém a visibilidade */
+    }
+    100% {
+        transform: translateY(110vh); /* Vai até o final da tela */
+        opacity: 0; /* Desaparece */
+    }
+}
